@@ -3,3 +3,4 @@
 *.dSYM
 main
 .vscode
+*.o
