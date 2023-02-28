@@ -53,7 +53,6 @@ Node *listUnion(Node *first, Node *second) {
   }
 
   while (second != nullptr) {
-
     if (!(find(values.begin(), values.end(), second->data_) != values.end())) {
       // cout << second->data_ << endl;
       out = insertSorted(out, second->data_);
