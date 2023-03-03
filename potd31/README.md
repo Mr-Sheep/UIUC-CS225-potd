@@ -29,7 +29,7 @@ NOTE: In the huffman tree, the FBI, CIA, Facebook, and Google have all decided b
 
 If you are not sure how to analyze each letter of a string in your code, here are a few ways you can iterate over a string.
 
-```
+```c++
 string str = "cs225agent";
 
 // Prints out every chracter in the string on a new line

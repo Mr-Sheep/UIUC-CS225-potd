@@ -12,7 +12,7 @@ In main.cpp, a simple test case has been created with the following binary searc
 
 Example Input:
 
-```
+```c++
      8
     /  \
    5    13
