@@ -1,6 +1,26 @@
 #include "TreeNode.h"
 #include <iostream>
 
+int getHeight(TreeNode *node) {
+  if (node == NULL) {
+    return 0;
+  }
+  int left = getHeight(node->left_);
+  int right = getHeight(node->right_);
+  return std::max(left, right) + 1;
+}
+
+TreeNode *find(TreeNode *node, int key) {
+  if (node == nullptr) {
+    return nullptr;
+  } else if (key == node->val_) {
+    return node;
+  } else if (key < node->val_) {
+    return find(node->left_, key);
+  } else
+    return find(node->right_, key);
+}
+
 TreeNode *deleteNode(TreeNode *root, int key) {
   if (root == NULL) {
     return root;
