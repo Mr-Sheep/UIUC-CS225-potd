@@ -5,10 +5,11 @@
 #include <queue>
 #include <stack>
 
-template <class T> class Tree {
-public:
+template <class T>
+class Tree {
+ public:
   class Node {
-  public:
+   public:
     T data_;
 
     Node *left_;
@@ -22,11 +23,12 @@ public:
   };
 
   class Iterator : std::iterator<std::forward_iterator_tag, T> {
-  private:
+   private:
     Node *curr_;
     std::stack<Node *> s_;
+    std::queue<Node *> q_;
 
-  public:
+   public:
     Iterator(Node *root);
 
     /**
@@ -69,7 +71,7 @@ public:
   Node *getRoot() { return root_; }
   void setRoot(Node *root) { root_ = root; }
 
-private:
+ private:
   /**
   The root node of the Tree, or NULL if the Tree is empty.
   **/

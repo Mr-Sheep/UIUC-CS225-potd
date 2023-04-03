@@ -1,8 +1,10 @@
-#include "tree.h"
 #include <algorithm>
 #include <iostream>
 
-template <class T> void print(std::vector<T> v) {
+#include "tree.h"
+
+template <class T>
+void print(std::vector<T> v) {
   std::cout << "<";
   for (size_t i = 0; i < v.size(); i++) {
     std::cout << v[i] << (i != v.size() - 1 ? ", " : "");
@@ -20,12 +22,20 @@ int main() {
           &vals[2], new Tree<int *>::Node(&vals[3]),
           new Tree<int *>::Node(NULL, new Tree<int *>::Node(&vals[4]),
                                 new Tree<int *>::Node(&vals[5])))));
+  // preorder & bfs
+  // std::vector<int *> expected = {&vals[0], &vals[1], &vals[2],
+  //                                &vals[3], &vals[4], &vals[5]};
 
-  std::vector<int *> expected = {&vals[5], &vals[4], &vals[2],
-                                 &vals[3], &vals[0], &vals[1]};
+  // inorder
+  // std::vector<int *> expected = {&vals[5], &vals[4], &vals[2],
+  //                                &vals[3], &vals[0], &vals[1]};
+
+  // postorder
+  // std::vector<int *> expected = {&vals[1], &vals[3], &vals[4],
+  //                                &vals[5], &vals[2], &vals[0]};
+
   std::vector<int *> actual;
-  for (int *i : t)
-    actual.push_back(i);
+  for (int *i : t) actual.push_back(i);
   std::cout << "Expected: ";
   print(expected);
   std::cout << "Actual  : ";
