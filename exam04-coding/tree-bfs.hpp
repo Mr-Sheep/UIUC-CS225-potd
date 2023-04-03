@@ -15,12 +15,6 @@ Tree<T>::Iterator::Iterator(Tree::Node *root) : curr_(root) {
 
 template <class T>
 typename Tree<T>::Iterator &Tree<T>::Iterator::operator++() {
-  // Move to the left child of the current node
-  if (s_.empty()) {
-    curr_ = NULL;
-    return *this;
-  }
-
   Tree::Node *prev = curr_;
   curr_ = NULL;
 
@@ -37,6 +31,8 @@ typename Tree<T>::Iterator &Tree<T>::Iterator::operator++() {
   if (!q_.empty()) {
     curr_ = q_.front();
     q_.pop();
+  } else {
+    curr_ = NULL;
   }
 
   // If the current node has NULL data_, move to the next valid node
