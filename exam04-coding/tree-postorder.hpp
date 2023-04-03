@@ -3,7 +3,7 @@
 #include "tree.h"
 template <class T>
 Tree<T>::Iterator::Iterator(Tree::Node *root) : curr_(root) {
-  // Initialize the stack with the right spine of the tree
+  // Initialize the stack with the left spine of the tree
   while (curr_ != NULL) {
     s_.push(curr_);
     if (curr_->left_)
@@ -24,12 +24,6 @@ Tree<T>::Iterator::Iterator(Tree::Node *root) : curr_(root) {
 
 template <class T>
 typename Tree<T>::Iterator &Tree<T>::Iterator::operator++() {
-  // Move to the left child of the current node
-  if (s_.empty()) {
-    curr_ = NULL;
-    return *this;
-  }
-
   Tree::Node *prev = curr_;
   curr_ = NULL;
 
