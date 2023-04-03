@@ -27,8 +27,8 @@ int main() {
   //                                &vals[3], &vals[4], &vals[5]};
 
   // inorder
-  // std::vector<int *> expected = {&vals[5], &vals[4], &vals[2],
-  //                                &vals[3], &vals[0], &vals[1]};
+  std::vector<int *> expected = {&vals[5], &vals[4], &vals[2],
+                                 &vals[3], &vals[0], &vals[1]};
 
   // postorder
   // std::vector<int *> expected = {&vals[1], &vals[3], &vals[4],
