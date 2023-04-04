@@ -4,16 +4,10 @@
 template <class T>
 Tree<T>::Iterator::Iterator(Tree::Node *root) : curr_(root) {
   // Initialize the stack with the right spine of the tree
-  while (curr_ != NULL) {
-    s_.push(curr_);
-    curr_ = curr_->right_;
-  }
+  // if (curr_ != NULL) {
+  //   q_.push(curr_);
+  // }
 
-  // If the root data_ is NULL, move to the next valid node
-  if (!s_.empty()) {
-    curr_ = s_.top();
-    s_.pop();
-  }
   while (curr_ != NULL && curr_->data_ == NULL) {
     this->operator++();
   }
@@ -21,19 +15,22 @@ Tree<T>::Iterator::Iterator(Tree::Node *root) : curr_(root) {
 
 template <class T>
 typename Tree<T>::Iterator &Tree<T>::Iterator::operator++() {
-  // Move to the left child of the current node
-  curr_ = curr_->left_;
-  // Traverse the right spine of the left subtree
-  while (curr_ != NULL) {
-    s_.push(curr_);
-    curr_ = curr_->right_;
+  Tree::Node *prev = curr_;
+  curr_ = NULL;
+
+  // Enqueue the left child if available
+  if (prev->left_ != NULL) {
+    q_.push(prev->left_);
+  }
+  // Enqueue the right child if available
+  if (prev->right_ != NULL) {
+    q_.push(prev->right_);
   }
 
-  if (!s_.empty()) {
-    curr_ = s_.top();
-    s_.pop();
-  } else {
-    curr_ = NULL;
+  // Dequeue the next node
+  if (!q_.empty()) {
+    curr_ = q_.front();
+    q_.pop();
   }
 
   // If the current node has NULL data_, move to the next valid node

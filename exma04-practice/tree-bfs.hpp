@@ -4,9 +4,9 @@
 template <class T>
 Tree<T>::Iterator::Iterator(Tree::Node *root) : curr_(root) {
   // Initialize the stack with the right spine of the tree
-  if (curr_ != NULL) {
-    s_.push(curr_);
-  }
+  // if (curr_ != NULL) {
+  //   q_.push(curr_);
+  // }
 
   while (curr_ != NULL && curr_->data_ == NULL) {
     this->operator++();
@@ -31,8 +31,6 @@ typename Tree<T>::Iterator &Tree<T>::Iterator::operator++() {
   if (!q_.empty()) {
     curr_ = q_.front();
     q_.pop();
-  } else {
-    curr_ = NULL;
   }
 
   // If the current node has NULL data_, move to the next valid node

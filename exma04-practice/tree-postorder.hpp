@@ -44,13 +44,10 @@ typename Tree<T>::Iterator &Tree<T>::Iterator::operator++() {
   if (!s_.empty()) {
     curr_ = s_.top();
     s_.pop();
-  } else {
-    curr_ = NULL;
   }
+
   // If the current node has NULL data_, move to the next valid node
-  while (curr_ != NULL && curr_->data_ == NULL) {
-    this->operator++();
-  }
+  while (curr_ != NULL && curr_->data_ == NULL) this->operator++();
 
   return *this;
 }
